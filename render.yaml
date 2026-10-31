@@ -1,0 +1,12 @@
+# Backend (persistent WebSocket) on Render's free tier. Free instances sleep after idle time.
+services:
+  - type: web
+    name: huntzone-server
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm run start
+    healthCheckPath: /health
+    envVars:
+      - key: CORS_ORIGINS
+        value: https://YOUR_PROJECT_ID.web.app,https://YOUR_PROJECT_ID.firebaseapp.com
